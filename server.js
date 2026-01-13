@@ -14,3 +14,10 @@ server.use("/shows", showsRouter);
 // CRITICAL: Do not use server.listen(). 
 // Export the app for Vercel to handle.
 export default server;
+// ... (your existing code) ...
+
+server.use("/", otherRouter);
+server.use("/shows", showsRouter);
+
+// Export for Vercel (Do not use app.listen)
+export default server;
