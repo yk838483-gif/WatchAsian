@@ -13,7 +13,6 @@ server.use(express.json());
 server.use("/", otherRouter)
 server.use("/shows", showsRouter);
 
-server.listen(config.SERVER.PORT, config.SERVER.HOST, () => {
-    printWelcome();
-    logger.info(`Server is running on ${config.SERVER.HOST}:${config.SERVER.PORT}`);
-});
+// REMOVED: server.listen(...)
+// ADDED: Export for Vercel
+export default server;
