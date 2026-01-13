@@ -1,11 +1,16 @@
-// ... keep imports and setup code ...
+import express from "express";
+import config from "./config.js";
+import { printWelcome, logger, WELCOME_BANNER } from "./utils/log.js";
+import showsRouter from "./routes/shows.js";
+import otherRouter from "./routes/others.js";
+
+const server = express();
+
+server.use(express.json());
 
 server.use("/", otherRouter)
 server.use("/shows", showsRouter);
 
-// --- DELETE THE server.listen(...) PART ---
-// --- PASTE THIS INSTEAD: ---
-
-export default function handler(req, res) {
-    return server(req, res);
-}
+// CRITICAL: Do not use server.listen(). 
+// Export the app for Vercel to handle.
+export default server;
